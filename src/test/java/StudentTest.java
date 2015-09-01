@@ -27,11 +27,11 @@ public class StudentTest {
     assertTrue(Student.all().get(0).equals(myStudent));
   }
 
-  // @Test
-  // public void find_findCategoryInDatabase_true() {
-  //   Category myCategory = new Category("Household chores");
-  //   myCategory.save();
-  //   Category savedCategory = Category.find(myCategory.getId());
-  //   assertTrue(myCategory.equals(savedCategory));
-  // }
+  @Test
+  public void find_findStudentInDatabase_true() {
+    Student myStudent = new Student("Teresa", "June 2015");
+    myStudent.save();
+    Student savedStudent = Student.find(myStudent.getId());
+    assertTrue(myStudent.equals(savedStudent));
+  }
 }

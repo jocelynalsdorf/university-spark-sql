@@ -52,16 +52,16 @@ public class Student {
         .getKey();
     }
   }
-//
-//   public static Category find(int id) {
-//     try(Connection con = DB.sql2o.open()) {
-//       String sql = "SELECT * FROM Categories where id=:id";
-//       Category Category = con.createQuery(sql)
-//         .addParameter("id", id)
-//         .executeAndFetchFirst(Category.class);
-//       return Category;
-//     }
-//   }
+
+  public static Student find(int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM students where id=:id";
+      Student student = con.createQuery(sql)
+        .addParameter("id", id)
+        .executeAndFetchFirst(Student.class);
+      return student;
+    }
+  }
 //   public void addTask(Task task) {
 //   try(Connection con = DB.sql2o.open()) {
 //     String sql = "INSERT INTO categories_tasks (category_id, task_id) VALUES (:category_id, :task_id)";
