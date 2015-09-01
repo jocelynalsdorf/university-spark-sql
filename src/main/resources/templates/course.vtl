@@ -13,9 +13,9 @@
 
 <form action='/add_students' method='post'>
     <input id="course_id" name="course_id" type="hidden" value="$course.getId()">
-    <label for="student_id">Add a course</label>
+    <label for="student_id">Add a student</label>
     <select id='student_id' name='student_id' type='text'>
-      #foreach($course in $allCourses)
+      #foreach($student in $allStudents)
         <option value="$student.getId()"> $student.getName() </option>
       #end
     </select>
