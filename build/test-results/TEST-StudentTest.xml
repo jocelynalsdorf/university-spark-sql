@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="StudentTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2015-09-01T18:46:57" hostname="epicodus-105.local" time="0.213">
+<testsuite name="StudentTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2015-09-01T18:50:38" hostname="epicodus-105.local" time="0.12">
   <properties/>
-  <testcase name="equals_returnsTrueIfNamesAretheSame" classname="StudentTest" time="0.075"/>
-  <testcase name="delete_deletesAllStudentsAndLists" classname="StudentTest" time="0.053"/>
-  <testcase name="all_emptyAtFirst" classname="StudentTest" time="0.009"/>
-  <testcase name="getCourses_returnsAllCourses_arrayList" classname="StudentTest" time="0.026"/>
+  <testcase name="equals_returnsTrueIfNamesAretheSame" classname="StudentTest" time="0.005"/>
+  <testcase name="delete_deletesAllStudentsAndLists" classname="StudentTest" time="0.031"/>
+  <testcase name="all_emptyAtFirst" classname="StudentTest" time="0.01"/>
+  <testcase name="getCourses_returnsAllCourses_arrayList" classname="StudentTest" time="0.024"/>
   <testcase name="save_savesIntoDatabase_true" classname="StudentTest" time="0.013"/>
-  <testcase name="find_findStudentInDatabase_true" classname="StudentTest" time="0.013"/>
-  <testcase name="add_Course_addsCourseToStudent" classname="StudentTest" time="0.023"/>
+  <testcase name="find_findStudentInDatabase_true" classname="StudentTest" time="0.014"/>
+  <testcase name="add_Course_addsCourseToStudent" classname="StudentTest" time="0.022"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
