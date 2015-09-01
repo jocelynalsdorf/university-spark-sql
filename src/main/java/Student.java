@@ -104,4 +104,17 @@ public void delete() {
       }
   }
 
+    public void update(String name, String enrolled) {
+      try(Connection con = DB.sql2o.open()) {
+        String sql = "UPDATE students SET (name, enrolled) = (:name, :enrolled) WHERE id = :id";
+        con.createQuery(sql)
+          .addParameter("name", name)
+          .addParameter("enrolled", enrolled)
+          .addParameter("id", id)
+          .executeUpdate();
+      }
+    }
+
+
+
 }

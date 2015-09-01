@@ -56,26 +56,27 @@ public class Course {
         .getKey();
     }
   }
+
+  public static Course find(int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM courses where id=:id";
+      Course course = con.createQuery(sql)
+        .addParameter("id", id)
+        .executeAndFetchFirst(Course.class);
+      return course;
+    }
+  }
 //
-//   public static Task find(int id) {
-//     try(Connection con = DB.sql2o.open()) {
-//       String sql = "SELECT * FROM tasks where id=:id";
-//       Task task = con.createQuery(sql)
-//         .addParameter("id", id)
-//         .executeAndFetchFirst(Task.class);
-//       return task;
-//     }
-//   }
-//
-//   public void update(String description) {
-//     try(Connection con = DB.sql2o.open()) {
-//       String sql = "UPDATE tasks SET description = :description WHERE id = :id";
-//       con.createQuery(sql)
-//         .addParameter("description", description)
-//         .addParameter("id", id)
-//         .executeUpdate();
-//     }
-//   }
+  public void update(String description, String course_number) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE courses SET (description, course_number) = (:description, :course_number) WHERE id = :id";
+      con.createQuery(sql)
+        .addParameter("description", description)
+        .addParameter("course_number", course_number)
+        .addParameter("id", id)
+        .executeUpdate();
+    }
+  }
 //
 //   public void delete() {
 //     try(Connection con = DB.sql2o.open()) {

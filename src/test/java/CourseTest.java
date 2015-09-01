@@ -36,11 +36,20 @@ public class CourseTest {
     assertEquals(myCourse.getId(), savedCourse.getId());
   }
 
-  // @Test
-  // public void find_findsTaskInDatabase_true() {
-  //   Task myTask = new Task("Mow the lawn");
-  //   myTask.save();
-  //   Task savedTask = Task.find(myTask.getId());
-  //   assertTrue(myTask.equals(savedTask));
-  // }
+  @Test
+  public void find_findsCourseInDatabase_true() {
+     Course myCourse = new Course("Mow the lawn", "1");
+     myCourse.save();
+     Course savedCourse = Course.find(myCourse.getId());
+     assertTrue(myCourse.equals(savedCourse));
+   }
+
+   @Test
+    public void update_updateCourseInfo() {
+      Course savedCourse = new Course("Khao Man Gai", "100 Anywhere");
+      savedCourse.save();
+      savedCourse.update("McDonalds", "200");
+      assertTrue(Course.all().get(0).getDescription().equals("McDonalds"));
+    }
+
 }

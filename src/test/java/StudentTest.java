@@ -76,4 +76,13 @@ public class StudentTest {
     assertEquals(myStudent.getCourses().size(), 0);
   }
 
+
+  @Test
+   public void update_updateStudentInfo() {
+     Student savedStudent = new Student("Khao Man Gai", "100 Anywhere");
+     savedStudent.save();
+     savedStudent.update("McDonalds", "200");
+     assertTrue(Student.all().get(0).getName().equals("McDonalds"));
+   }
+
 }//end of test class
