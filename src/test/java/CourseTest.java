@@ -1,6 +1,8 @@
 import org.junit.*;
 import static org.junit.Assert.*;
 import org.junit.Rule;
+import java.util.List;
+
 
 
 public class CourseTest {
@@ -50,6 +52,32 @@ public class CourseTest {
       savedCourse.save();
       savedCourse.update("McDonalds", "200");
       assertTrue(Course.all().get(0).getDescription().equals("McDonalds"));
+    }
+
+    @Test
+    public void getStudents_returnsAllStudents_arrayList() {
+      Course myCourse = new Course("math", "123");
+      myCourse.save();
+
+      Student myStudent = new Student("teresa", "fall 2015");
+      myStudent.save();
+
+      myCourse.addStudent(myStudent);
+      List savedStudents = myCourse.getStudents();
+      assertEquals(savedStudents.size(), 1);
+    }
+
+    @Test
+    public void delete_deletesAllCoursesAndLists() {
+      Course myCourse = new Course("math", "133");
+      myCourse.save();
+
+      Student myStudent = new Student("teresa", "june 2015");
+      myStudent.save();
+
+      myCourse.addStudent(myStudent);
+      myCourse.delete();
+      assertEquals(myCourse.getStudents().size(), 0);
     }
 
 }
