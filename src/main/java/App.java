@@ -93,6 +93,33 @@ public class App {
       return null;
     });
 
+      get("/students/:id/update", (request, response) -> {
+       HashMap<String, Object> model = new HashMap<String, Object>();
+       Student student = Student.find(Integer.parseInt(request.params(":id")));
+       model.put("student", student);
+       model.put("template", "templates/edit-student.vtl");
+       return new ModelAndView(model, layout);
+     }, new VelocityTemplateEngine());
+
+     post("/students/:id/update", (request, response) -> {
+     HashMap<String, Object> model = new HashMap<String, Object>();
+     Student student = Student.find(Integer.parseInt(request.params(":id")));
+     String name = request.queryParams("name");
+     String enrolled = request.queryParams("enrolled");
+     student.update(name, enrolled);
+     response.redirect("/students/" + student.getId());
+     return null;
+   });
+
+    post("/students/:id/delete", (request, response) -> {
+     HashMap<String, Object> model = new HashMap<String, Object>();
+     Student student = Student.find(Integer.parseInt(request.params(":id")));
+     student.delete();
+     response.redirect("/");
+     return null;
+      });
+
+
 
   }
 }
