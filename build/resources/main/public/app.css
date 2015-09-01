@@ -1,0 +1,30 @@
+/*body {
+  color: red;
+}*/
+.hidden {
+  display: none;
+}
+
+
+span {
+  color:red;
+}
+
+body {
+    background-image: url("images/notebookpaper.jpg");
+    background-size: 75%;
+    background-repeat: no-repeat;
+}
+
+h1 {
+
+padding-top: 50px;
+padding-left: 80px;
+}
+
+
+h3 {
+
+  padding-top: 10px;
+  padding-left: 85px;
+}
