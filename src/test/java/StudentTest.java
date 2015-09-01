@@ -20,13 +20,13 @@ public class StudentTest {
     assertTrue(firstStudent.equals(secondStudent));
   }
 
-  // @Test
-  // public void save_savesIntoDatabase_true() {
-  //   Category myCategory = new Category("Household chores");
-  //   myCategory.save();
-  //   assertTrue(Category.all().get(0).equals(myCategory));
-  // }
-  //
+  @Test
+  public void save_savesIntoDatabase_true() {
+    Student myStudent = new Student("Teresa", "June 2015");
+    myStudent.save();
+    assertTrue(Student.all().get(0).equals(myStudent));
+  }
+
   // @Test
   // public void find_findCategoryInDatabase_true() {
   //   Category myCategory = new Category("Household chores");

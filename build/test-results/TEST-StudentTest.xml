@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="StudentTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2015-09-01T17:50:29" hostname="epicodus-105.local" time="0.11">
+<testsuite name="StudentTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2015-09-01T17:58:40" hostname="epicodus-105.local" time="0.132">
   <properties/>
   <testcase name="equals_returnsTrueIfNamesAretheSame" classname="StudentTest" time="0.079"/>
-  <testcase name="all_emptyAtFirst" classname="StudentTest" time="0.03"/>
+  <testcase name="all_emptyAtFirst" classname="StudentTest" time="0.034"/>
+  <testcase name="save_savesIntoDatabase_true" classname="StudentTest" time="0.019"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

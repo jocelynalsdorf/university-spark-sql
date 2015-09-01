@@ -41,16 +41,17 @@ public class Student {
               this.getEnrolled().equals(newStudent.getEnrolled());
     }
   }
-//
-//   public void save() {
-//     try(Connection con = DB.sql2o.open()) {
-//       String sql = "INSERT INTO Categories(name) VALUES (:name)";
-//       this.id = (int) con.createQuery(sql, true)
-//         .addParameter("name", this.name)
-//         .executeUpdate()
-//         .getKey();
-//     }
-//   }
+
+  public void save() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO Students(name, enrolled) VALUES (:name, :enrolled)";
+      this.id = (int) con.createQuery(sql, true)
+        .addParameter("name", this.name)
+        .addParameter("enrolled", this.enrolled)
+        .executeUpdate()
+        .getKey();
+    }
+  }
 //
 //   public static Category find(int id) {
 //     try(Connection con = DB.sql2o.open()) {
