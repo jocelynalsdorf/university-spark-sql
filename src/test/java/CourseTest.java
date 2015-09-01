@@ -28,14 +28,14 @@ public class CourseTest {
     assertTrue(savedCourse.equals(myCourse));
   }
 
-  // @Test
-  // public void save_assignsIdToObject() {
-  //   Task myTask = new Task("Mow the lawn");
-  //   myTask.save();
-  //   Task savedTask = Task.all().get(0);
-  //   assertEquals(myTask.getId(), savedTask.getId());
-  // }
-  //
+  @Test
+  public void save_assignsIdToObject() {
+    Course myCourse = new Course("Mow the lawn", "1");
+    myCourse.save();
+    Course savedCourse = Course.all().get(0);
+    assertEquals(myCourse.getId(), savedCourse.getId());
+  }
+
   // @Test
   // public void find_findsTaskInDatabase_true() {
   //   Task myTask = new Task("Mow the lawn");
