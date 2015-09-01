@@ -73,6 +73,26 @@ public class App {
        return null;
      });
 
+     post("/add_courses", (request, response) -> {
+      int courseId = Integer.parseInt(request.queryParams("course_id"));
+      int studentId = Integer.parseInt(request.queryParams("student_id"));
+      Student student = Student.find(studentId);
+      Course course = Course.find(courseId);
+      student.addCourse(course);
+      response.redirect("/students/" + studentId);
+      return null;
+    });
+
+    post("/add_students", (request, response) -> {
+      int courseId = Integer.parseInt(request.queryParams("course_id"));
+      int studentId = Integer.parseInt(request.queryParams("student_id"));
+      Student student = Student.find(studentId);
+      Course course = Course.find(courseId);
+      course.addStudent(student);
+      response.redirect("/courses/" + courseId);
+      return null;
+    });
+
 
   }
 }
