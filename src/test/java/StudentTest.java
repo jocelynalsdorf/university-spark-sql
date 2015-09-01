@@ -63,4 +63,17 @@ public class StudentTest {
     assertEquals(savedCourses.size(), 1);
   }
 
+  @Test
+  public void delete_deletesAllStudentsAndLists() {
+    Course myCourse = new Course("math", "133");
+    myCourse.save();
+
+    Student myStudent = new Student("teresa", "june 2015");
+    myStudent.save();
+
+    myStudent.addCourse(myCourse);
+    myStudent.delete();
+    assertEquals(myStudent.getCourses().size(), 0);
+  }
+
 }//end of test class
