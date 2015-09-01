@@ -101,22 +101,50 @@ public class App {
        return new ModelAndView(model, layout);
      }, new VelocityTemplateEngine());
 
-     post("/students/:id/update", (request, response) -> {
-     HashMap<String, Object> model = new HashMap<String, Object>();
-     Student student = Student.find(Integer.parseInt(request.params(":id")));
-     String name = request.queryParams("name");
-     String enrolled = request.queryParams("enrolled");
-     student.update(name, enrolled);
-     response.redirect("/students/" + student.getId());
-     return null;
-   });
+      post("/students/:id/update", (request, response) -> {
+       HashMap<String, Object> model = new HashMap<String, Object>();
+       Student student = Student.find(Integer.parseInt(request.params(":id")));
+       String name = request.queryParams("name");
+       String enrolled = request.queryParams("enrolled");
+       student.update(name, enrolled);
+       response.redirect("/students/" + student.getId());
+       return null;
+     });
 
-    post("/students/:id/delete", (request, response) -> {
-     HashMap<String, Object> model = new HashMap<String, Object>();
-     Student student = Student.find(Integer.parseInt(request.params(":id")));
-     student.delete();
-     response.redirect("/");
-     return null;
+      post("/students/:id/delete", (request, response) -> {
+       HashMap<String, Object> model = new HashMap<String, Object>();
+       Student student = Student.find(Integer.parseInt(request.params(":id")));
+       student.delete();
+       response.redirect("/");
+       return null;
+        });
+
+
+      get("/courses/:id/update", (request, response) -> {
+       HashMap<String, Object> model = new HashMap<String, Object>();
+       Course course = Course.find(Integer.parseInt(request.params(":id")));
+       model.put("course", course);
+       model.put("template", "templates/edit-course.vtl");
+       return new ModelAndView(model, layout);
+     }, new VelocityTemplateEngine());
+
+
+     post("/courses/:id/update", (request, response) -> {
+      int courseId = Integer.parseInt(request.params(":id"));
+      Course course = Course.find(courseId);
+      String description = request.queryParams("description");
+      String course_number = request.queryParams("course_number");
+      course.update(description, course_number);
+      response.redirect("/courses/" + courseId);
+      return null;
+    });
+
+      post("/courses/:id/delete", (request, response) -> {
+       HashMap<String, Object> model = new HashMap<String, Object>();
+       Course course = Course.find(Integer.parseInt(request.params(":id")));
+       course.delete();
+       response.redirect("/");
+       return null;
       });
 
 

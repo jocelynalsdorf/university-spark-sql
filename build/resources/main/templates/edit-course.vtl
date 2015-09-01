@@ -1,0 +1,29 @@
+<br>
+<br>
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8 well">
+
+    <h3>Update $course.getDescription()</h3>
+
+    <form action="/courses/$course.getId()/update" method="post">
+      <div class="form-group">
+        <label for="description">Update Course</label>
+        <input id="description" name="description" type="text" class="form-control">
+      </div>
+        <div class="form-group">
+          <label for="course_number">Update Course</label>
+          <input id="course_number" name="course_number" type="text" class="form-control">
+        </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+
+<br>
+   <form action="/courses/$course.getId()/delete" method="post">
+      <button type="submit" class="btn btn-danger $course.getDescription()">Delete Course</button>
+    </form>
+
+
+  </div>
+  <div class="col-md-2"></div>
+</div>
