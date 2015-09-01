@@ -5,47 +5,57 @@ import java.util.ArrayList;
 public class Course {
   private int id;
   private String description;
+  private String course_number;
 
-//   public int getId() {
-//     return id;
-//   }
-//
-//   public String getDescription() {
-//     return description;
-//   }
-//
-//   public Task(String description) {
-//     this.description = description;
-//   }
-//
-//   @Override
-//   public boolean equals(Object otherTask){
-//     if (!(otherTask instanceof Task)) {
-//       return false;
-//     } else {
-//       Task newTask = (Task) otherTask;
-//       return this.getDescription().equals(newTask.getDescription()) &&
-//              this.getId() == newTask.getId();
-//     }
-//   }
-//
-//
-//   public static List<Task> all() {
-//     String sql = "SELECT id, description FROM tasks";
-//     try(Connection con = DB.sql2o.open()) {
-//       return con.createQuery(sql).executeAndFetch(Task.class);
-//     }
-//   }
-//
-//   public void save() {
-//     try(Connection con = DB.sql2o.open()) {
-//       String sql = "INSERT INTO tasks (description) VALUES (:description)";
-//       this.id = (int) con.createQuery(sql, true)
-//         .addParameter("description", description)
-//         .executeUpdate()
-//         .getKey();
-//     }
-//   }
+  public int getId() {
+    return id;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public String getCourse_number() {
+    return course_number;
+  }
+
+  public Course(String description, String course_number) {
+    this.description = description;
+    this.course_number = course_number;
+
+  }
+
+
+  @Override
+  public boolean equals(Object otherCourse){
+    if (!(otherCourse instanceof Course)) {
+      return false;
+    } else {
+      Course newCourse = (Course) otherCourse;
+      return this.getDescription().equals(newCourse.getDescription()) &&
+             this.getCourse_number().equals(newCourse.getCourse_number()) &&
+             this.getId() == newCourse.getId();
+    }
+  }
+
+
+  public static List<Course> all() {
+    String sql = "SELECT id, description, course_number FROM courses";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql).executeAndFetch(Course.class);
+    }
+  }
+
+  public void save() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO courses (description, course_number) VALUES (:description, :course_number)";
+      this.id = (int) con.createQuery(sql, true)
+        .addParameter("description", description)
+        .addParameter("course_number", course_number)
+        .executeUpdate()
+        .getKey();
+    }
+  }
 //
 //   public static Task find(int id) {
 //     try(Connection con = DB.sql2o.open()) {

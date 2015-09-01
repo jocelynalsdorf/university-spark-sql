@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.List;
+
 
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -34,4 +36,31 @@ public class StudentTest {
     Student savedStudent = Student.find(myStudent.getId());
     assertTrue(myStudent.equals(savedStudent));
   }
-}
+
+  @Test
+   public void add_Course_addsCourseToStudent(){
+    Student myStudent = new Student("Teresa", "June 2015");
+    myStudent.save();
+
+    Course myCourse = new Course("Math", "123");
+    myCourse.save();
+
+    myStudent.addCourse(myCourse);
+    Course savedCourse = myStudent.getCourses().get(0);
+    assertTrue(myCourse.equals(savedCourse));
+  }
+
+  @Test
+  public void getCourses_returnsAllCourses_arrayList() {
+    Course myCourse = new Course("math", "123");
+    myCourse.save();
+
+    Student myStudent = new Student("teresa", "fall 2015");
+    myStudent.save();
+
+    myStudent.addCourse(myCourse);
+    List savedCourses = myStudent.getCourses();
+    assertEquals(savedCourses.size(), 1);
+  }
+
+}//end of test class
