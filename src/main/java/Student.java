@@ -71,25 +71,37 @@ public class Student {
       .executeUpdate();
   }
 }
-public ArrayList<Course> getCourses() {
+
+public List<Course> getCourses() {
   try(Connection con = DB.sql2o.open()){
-    String sql = "SELECT course_id FROM courses_students WHERE student_id = :student_id";
-    List<Integer> courseIds = con.createQuery(sql)
+    String sql = "SELECT courses.* FROM students JOIN courses_students ON (students.id = courses_students.student_id) JOIN courses ON (courses_students.course_id = courses.id) where students.id= :student_id;";
+       List<Course> courses = con.createQuery(sql)
       .addParameter("student_id", this.getId())
-      .executeAndFetch(Integer.class);
-
-    ArrayList<Course> courses = new ArrayList<Course>();
-
-    for (Integer courseId : courseIds) {
-        String courseQuery = "Select * From courses WHERE id = :courseId";
-        Course course = con.createQuery(courseQuery)
-          .addParameter("courseId", courseId)
-          .executeAndFetchFirst(Course.class);
-        courses.add(course);
-    }
+      .executeAndFetch(Course.class);
     return courses;
   }
- }
+}
+
+//This method is replaced by the above getCourses
+/// public ArrayList<Course> getCourses() {
+//   try(Connection con = DB.sql2o.open()){
+//     String sql = "SELECT course_id FROM courses_students WHERE student_id = :student_id";
+//     List<Integer> courseIds = con.createQuery(sql)
+//       .addParameter("student_id", this.getId())
+//       .executeAndFetch(Integer.class);
+//
+//     ArrayList<Course> courses = new ArrayList<Course>();
+//
+//     for (Integer courseId : courseIds) {
+//         String courseQuery = "Select * From courses WHERE id = :courseId";
+//         Course course = con.createQuery(courseQuery)
+//           .addParameter("courseId", courseId)
+//           .executeAndFetchFirst(Course.class);
+//         courses.add(course);
+//     }
+//     return courses;
+//   }
+//  }
 public void delete() {
   try(Connection con = DB.sql2o.open()) {
     String deleteQuery = "DELETE FROM students WHERE id = :id;";
